@@ -11,6 +11,24 @@ import Routes from './routes/index';
 
 import './App.css';
 
+
+
+class App extends Component {
+	render() {
+		return (
+			<div className="task-dashboard-container">
+				<BrowserRouter>
+					<Routes/>
+				</BrowserRouter>
+			</div>
+		)
+	}
+}
+
+export default App;
+
+
+
 // const httpLink = new HttpLink({ uri: 'http://localhost:5000/graphql' });
 // const authLink = setContext(( _, { headers}) => {
 // 	const token = TOKEN;
@@ -43,16 +61,5 @@ import './App.css';
 // 	}
 // }
 
-class App extends Component {
-	render() {
-		return (
-			<div className="task-dashboard-container">
-				<BrowserRouter>
-					<Routes/>
-				</BrowserRouter>
-			</div>
-		)
-	}
-}
 
-export default App;
+
