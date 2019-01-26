@@ -1,3 +1,7 @@
+export const totalMinsInDay = 1440;
+export const totalMillisecondsInDay = 1440 * 60 * 1000;
+export const totalWorkHoursInDay = 8;
+
 export function millisToMinutesAndSeconds(millis) {
 	// const millis = endTime - startTime;
 	const minutes = Math.floor(millis / 60000);

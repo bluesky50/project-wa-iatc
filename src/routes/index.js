@@ -12,17 +12,20 @@ import { AppContext } from '../AppContext';
 import { tasks } from '../seed/tasks';
 import { taskThreads } from '../seed/taskThreads';
 import { taskGroups } from '../seed/taskGroups';
+import { contexts } from '../seed/contexts';
 import { createEvent } from '../helpers/events';
 
 import { convertTaskStatusToString } from '../helpers/statusHelpers';
 
 import { TASK_COMPLETE, TASK_ACTIVE, TASK_QUEUED, TASK_DEFAULT } from '../helpers/constants';
-import { EVENT_TYPE_CREATE, EVENT_TYPE_UPDATE, EVENT_TYPE_DELETE, OBJECT_TASK, OBJECT_TASK_GROUP, OBJECT_TASK_THREAD } from '../helpers/constants';
+import { EVENT_TYPE_CREATE, EVENT_TYPE_UPDATE, EVENT_TYPE_DELETE } from '../helpers/constants';
+import {  OBJECT_TASK, OBJECT_TASK_GROUP, OBJECT_TASK_THREAD } from '../helpers/objectNames';
 // import { globalState } from '../helpers/globalState';
 
 class AppProvider extends Component {
 	state = {
 		events: [],
+		contexts,
 		workSessions: [],
 		timedTaskStartEvents: [],
 		tasks,
@@ -38,19 +41,24 @@ class AppProvider extends Component {
 				events: [...this.state.events, { id: this.state.events.length, ...newEvent }]
 			})
 		},
-		addGoal: (newTaskThread) => {
+		addTaskThread: (newTaskThread) => {
 			const newEvent = createEvent(`${OBJECT_TASK_THREAD} '${newTaskThread.title}' has been created`, EVENT_TYPE_CREATE, OBJECT_TASK_THREAD, newTaskThread.id, 1);
 			this.setState({ 
 				taskThreads: [...this.state.taskThreads, newTaskThread],
 				events: [...this.state.events, { id: this.state.events.length, ...newEvent }]
 			});
 		},
-		addObjectives: (newTaskGroup) => {
+		addTaskGroup: (newTaskGroup) => {
+			console.log(this.state.taskGroups);
 			const newEvent = createEvent(`${OBJECT_TASK_GROUP} '${newTaskGroup.title}' has been created`, EVENT_TYPE_CREATE, OBJECT_TASK_GROUP, newTaskGroup.id, 1);
 			this.setState({ 
 				taskGroups: [...this.state.taskGroups, newTaskGroup],
+				// taskTheads: [...this.state.taskThreads],
 				events: [...this.state.events, { id: this.state.events.length, ...newEvent }]
 			})
+			setTimeout(() => {
+				console.log(this.state.taskGroups);
+			}, 1000);
 		},
 		startTimedTaskEvent: (taskId) => {
 			console.log('global state.start(' + taskId + '): ', this.state.timedTaskStartEvents);
@@ -76,7 +84,7 @@ class AppProvider extends Component {
 			const workSession = {
 				taskId,
 				startTime: null,
-				endTime: Date.now() + (1000 * 60 * 5)
+				endTime: Date.now() // + (1000 * 60 * 5)
 			};
 			this.state.timedTaskStartEvents.forEach((te) => {
 				if (te.taskId === taskId) {

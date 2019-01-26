@@ -14,7 +14,3 @@ export const TASK_THREAD_DEFAULT = 4;
 export const EVENT_TYPE_CREATE = 1;
 export const EVENT_TYPE_UPDATE = 2;
 export const EVENT_TYPE_DELETE = 3;
-
-export const OBJECT_TASK = 'task';
-export const OBJECT_TASK_THREAD = 'taskThread';
-export const OBJECT_TASK_GROUP = 'taskGroup';

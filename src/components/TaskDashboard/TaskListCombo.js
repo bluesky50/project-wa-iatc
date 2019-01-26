@@ -49,7 +49,7 @@ export default class TaskListCombo extends Component {
 			const taskDurations = timedTaskStartEvents.map((te) => {
 				const dur = Date.now() - te.startTime;
 				// const per = Math.floor((millisToMinutes(dur) / minutes / dailyWorkHours) * 100);
-				const per = Math.floor((millisToMinutes(dur) + 3 / minutes) * 100);
+				const per = Math.floor((millisToMinutes(dur) / minutes) * 100);
 				// console.log('percent', per);
 				return {
 					taskId: te.taskId,

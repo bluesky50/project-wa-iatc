@@ -56,17 +56,17 @@ export default class TaskProgress extends Component {
 		// console.log('task progress - timed durations', timedDuration, timedPercent)
 		const classNameString = '';
 		const totalWorkDurationStyle = {
-			flex: totalWorkDurationPercent 
+			flex: totalWorkDurationPercent <= 100 ? totalWorkDurationPercent : 100
 		}
 
 		const timedDurationStye = {
-			flex: timedPercent,
+			flex: timedPercent <= 100 ? timedPercent : 5,
 			height: '100%',
 			background: 'pink'
 		};
 
 		const fillerStyle = {
-			flex: 100 - timedPercent - totalWorkDurationPercent
+			flex: totalWorkDurationPercent + timedPercent <= 100 ? (100 - timedPercent - totalWorkDurationPercent) : 0
 		}
 
 		const durationString = millisToMinutesAndSeconds(timedDuration + totalWorkDuration);

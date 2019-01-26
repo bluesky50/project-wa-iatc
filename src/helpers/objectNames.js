@@ -1,0 +1,12 @@
+export const OBJECT_TASK = 'task';
+export const OBJECT_TASK_THREAD = 'taskThread';
+export const OBJECT_TASK_GROUP = 'taskGroup';
+export const OBJECT_PROBLEM = 'problem';
+export const OBJECT_RESEARCH_QUESTION = 'question';
+export const OBJECT_DECISION = 'decision';
+export const OBJECT_ISSUE = 'issue';
+export const OBJECT_CHECKLIST = 'checklist';
+export const OBJECT_ROUTINE = 'routine';
+export const OBJECT_NEED = 'need';
+export const OBJECT_WORK_SESSION = 'workSession';
+export const OBJECT_EVENT = 'event';

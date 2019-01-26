@@ -37,12 +37,14 @@ export default class BodyRight extends Component {
 						return (
 							<React.Fragment> */}
 								
-								<div style={{ display: 'flex' }}>
+								{/* <div style={{ display: 'flex' }}>
 									<button style={style} onClick={() => this.toggleTaskThreadsSelection(TASK_THREAD_ACTIVE)}>Active</button>
 									<button style={style} onClick={() => this.toggleTaskThreadsSelection(TASK_THREAD_COMPLETE)}>Complete</button>
 									<button style={style} onClick={() => this.toggleTaskThreadsSelection(TASK_THREAD_QUEUED)}>QUEUED</button>
+								</div> */}
+								<div className="tdc-section">
+									<GoalSection title={"Active Goals"} taskThreadsStatus={this.state.taskThreadsStatusSelection}/>
 								</div>
-								<GoalSection title={"Active Goals"} taskThreadsStatus={this.state.taskThreadsStatusSelection}/>
 								<WorkSessionSection title={"Work Session Log"} />
 							{/* </React.Fragment>
 						);
